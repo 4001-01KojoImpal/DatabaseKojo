@@ -56,5 +56,60 @@ create table Menu (
 	namaMenu varchar2(25),
 	hargaMenu integer,
 	idPemilik varchar2(10),
-	
+
+	CONSTRAINT PK_Menu PRIMARY KEY (idMenu),
+	CONSTRAINT FK_Menu FOREIGN KEY (idPemilik)
+	REFERENCES Pemilik (idPemilik)
+);
+
+create table Stand (
+	idStand varchar2(10)
+	namaEvent varchar2(25),
+	tglEvent date,
+	hargaStand integer,
+	ukuran integer,
+	alamat varchar2(50),
+	idPStand varchar2(10),
+
+	CONSTRAINT PK_Stand PRIMARY KEY (idStand),
+	CONSTRAINT FK_Menu FOREIGN KEY (idPemilik)
+	REFERENCES PenyediaStand (idPStand)
+);
+
+create table Barang (
+	idBarang varchar2(10),
+	namaBarang varchar2(25),
+	hargaBarang integer,
+	jumBarang integer,
+	idSupplier varchar2(10),
+
+	CONSTRAINT PK_Barang PRIMARY KEY (idBarang),
+	CONSTRAINT FK_Barang FOREIGN KEY (idSupplier)
+	REFERENCES Supplier (idSupplier)
+);
+
+create table Bahan (
+	idBahan varchar2(10),
+	namaBahan varchar2(25),
+	hargaBahan integer,
+	jumBahan integer,
+	idSupplier varchar2(10),
+
+	CONSTRAINT PK_Bahan PRIMARY KEY (idBahan),
+	CONSTRAINT FK_Bahan FOREIGN KEY (idSupplier)
+	REFERENCES Supplier (idSupplier)
+);
+
+create table RMemesan (
+	noPesanan varchar2(10),
+	tglPesanan date,
+	jumPesanan integer,
+	idPelanggan varchar2(10),
+	idMenu varchar2(10),
+
+	CONSTRAINT PK_RMemesan PRIMARY KEY (noPesanan),
+	CONSTRAINT FK_RMemesan FOREIGN KEY (idPelanggan)
+	REFERENCES Pelanggan (idPelanggan),
+	CONSTRAINT FK_RMemesan FOREIGN KEY (idMenu)
+	REFERENCES Menu (idMenu)
 );
