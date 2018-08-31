@@ -1,7 +1,7 @@
 create table Pemilik (
 	idPemilik	varchar2(10),
 	namaPemilik varchar2(25),
-	kontak_pemilik varchar2(12),
+	kontakPemilik varchar2(12),
 
 	CONSTRAINT PK_Pemilik PRIMARY KEY (idPemilik)
 );
@@ -9,7 +9,7 @@ create table Pemilik (
 create table PenyediaStand(
 	idStand	varchar2(10),
 	NamaPStand varchar2(25),
-	kontak_PStand	varchar2(12),
+	kontakPStand	varchar2(12),
 	idPemilik varchar2(10),
 
 	CONSTRAINT PK_PenyediaStand PRIMARY KEY (idStand),
@@ -20,7 +20,7 @@ create table PenyediaStand(
 create table Supplier (
 	idSupplier varchar2(10),
 	namaSupplier varchar2(25),
-	kontak_Supplier varchar2(12),
+	kontakSupplier varchar2(12),
 	idPemilik varchar2(10),
 
 	CONSTRAINT PK_Supplier PRIMARY KEY (idSupplier),
@@ -113,3 +113,27 @@ create table RMemesan (
 	CONSTRAINT FK_RMemesan FOREIGN KEY (idMenu)
 	REFERENCES Menu (idMenu)
 );
+
+insert into Pemilik (idPemilik, namaPemilik, kontakPemilik)
+values (0000000000, Jojo Tarigan, 081313215737);
+
+insert into Menu (idMenu, namaMenu, hargaMenu)
+values (M01, Espresso, 18000);
+
+insert into Menu (idMenu, namaMenu, hargaMenu)
+values (M02, Cafe Latte, 18000);
+
+insert into Menu (idMenu, namaMenu, hargaMenu)
+values(M03, Cappucino, 20000);
+
+insert into Menu (idMenu, namaMenu, hargaMenu)
+values (M04, V60, 21000);
+
+insert into Menu (idMenu, namaMenu, hargaMenu);
+values (M05, Mochacino, 20000);
+
+insert into Menu (idMenu, namaMenu, hargaMenu)
+values (M06, Pink Pelvet, 21000);
+
+Select idMenu, namaMenu, hargaMenu
+FROM Menu;
